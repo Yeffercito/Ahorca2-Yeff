@@ -52,7 +52,6 @@ const jueguito = [
   "loro",
   "camello",
   "ardilla",
-
 ];
 let jueguito1 = [];
 let jueguito2 = [];
@@ -60,6 +59,7 @@ let randomm = Math.floor(Math.random() * jueguito.length);
 
 let palabrita = jueguito[randomm];
 jueguito.splice(randomm, 1);
+
 for (let i = 0; i < palabrita.length; i++) {
   letra.innerHTML += `<div id="letra${i}"  style="border-bottom: 0.188rem solid black; width: 1.25rem;height: 1.25rem">
     </div>`;
@@ -134,16 +134,12 @@ text1.addEventListener("keyup", function (event) {
     valor1 = valor1.toLocaleLowerCase();
     text1.value = "";
     valid_arr(valor1, jueguito2);
-    console.log(valid_array);
     if (fin != 1 && valid_array === 0) {
       jueguito2.push(valor1);
       cont_palabras.innerHTML += `<div style="border-bottom: 0px solid black; width: 1.875rem;text-align:center"><u>${valor1}</u>
       </div>`;
       if (valor1 === palabrita) {
         for (let i = 0; i < palabrita.length; i++) {
-          console.log("hola");
-          console.log(palabrita.length);
-          console.log(palabrita);
           aaa = document.getElementById(`letra${i}`);
           aaa.innerHTML = `<div id="letra${i}"  style="border-bottom: 0px solid black; width: 1.25rem;text-align:center">${palabrita[i]}
   </div>`;
@@ -202,9 +198,7 @@ function failed() {
           img.innerHTML = `<img id="img1" src="./assets/img8.jpeg" alt="" style="width: 31.25rem; height: 31.25rem;"> `;
           break;
       }
-      // console.log(descontfail);
     } else {
-      console.log("perdio");
       fin = 1;
       final_feliz();
     }
@@ -213,12 +207,10 @@ function failed() {
 }
 
 function winner() {
-  // console.log(ganador);
   if (fin != 1) {
     if (palabrita.length === ganador) {
       fin = 1;
       final_feliz();
-      console.log("gano pai");
     } else {
       ganador++;
     }
@@ -226,8 +218,10 @@ function winner() {
 }
 
 function valid_arr(vlr, pala) {
-  for (let i = 0; i < pala.length; i++) {
-    if (vlr === pala[i]) {
+  console.log(vlr
+    );
+  for (let i = 0; i < pala.length; i++ || vlr === "") {
+    if (vlr === pala[i] || vlr=== "") {
       valid_array = 1;
     }
   }
